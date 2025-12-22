@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>
+    {% for v in data %}
+    <li>
+        <a href="/vulnerability/{{ v[0] }}">{{ v[1] }}</a> - {{ v[4] }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

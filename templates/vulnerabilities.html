@@ -1,10 +1,34 @@
-{% extends "base.html" %}
-{% block content %}
-<ul>
-    {% for v in data %}
-    <li>
-        <a href="/vulnerability/{{ v[0] }}">{{ v[1] }}</a> - {{ v[4] }}
-    </li>
-    {% endfor %}
-</ul>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des vulnérabilités</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Liste des vulnérabilités</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Package</th>
+            <th>Ecosystème</th>
+            <th>Type</th>
+            <th>CVSS</th>
+            <th>Severité</th>
+            <th>Détails</th>
+        </tr>
+        {% for v in data %}
+        <tr>
+            <td>{{ v['id'] }}</td>
+            <td>{{ v['package_name'] }}</td>
+            <td>{{ v['ecosystem'] }}</td>
+            <td>{{ v['vulnerability_type'] }}</td>
+            <td>{{ v['cvss_score'] }}</td>
+            <td>{{ v['severity'] }}</td>
+            <td><a href="/vulnerability/{{ v['id'] }}">Voir</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Retour à l'accueil</a>
+</body>
+</html>
